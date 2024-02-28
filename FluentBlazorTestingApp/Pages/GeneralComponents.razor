@@ -1,0 +1,124 @@
+﻿@page "/generalcomponents"
+<h3>GeneralComponents</h3>
+<br />
+<h4>Counter Badges</h4>
+<br />
+<FluentCounterBadge Count="100" Appearance="Appearance.Accent">
+    <FluentButton>
+        <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
+    </FluentButton>
+</FluentCounterBadge>
+
+<FluentSpacer Width="25" />
+
+<FluentCounterBadge Count="5" Appearance="Appearance.Neutral">
+    <FluentButton Appearance="Appearance.Accent">
+        <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Fill" />
+    </FluentButton>
+</FluentCounterBadge>
+
+<FluentSpacer Width="25" />
+
+<FluentCounterBadge Count="5" Appearance="Appearance.Lightweight">
+    <FluentButton Appearance="Appearance.Accent">
+        <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Fill" />
+    </FluentButton>
+</FluentCounterBadge>
+
+<FluentSpacer Width="25" />
+
+<FluentCounterBadge Count="5" Appearance="Appearance.Lightweight" BackgroundColor="Color.Lightweight" Color="Color.Error">
+    <FluentButton Appearance="Appearance.Accent">
+        <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Fill" />
+    </FluentButton>
+</FluentCounterBadge>
+
+<FluentSpacer Width="25" />
+
+
+<FluentCounterBadge Count="9" BackgroundColor="@Color.Error" Color="Color.Fill">
+    <FluentButton Appearance="Appearance.Neutral">
+        <FluentIcon Value="@(new Icons.Regular.Size24.Mail())" Color="@Color.FillInverse" />
+    </FluentButton>
+</FluentCounterBadge>
+
+<FluentSpacer Width="25" />
+
+<FluentCounterBadge Count="0" Appearance="Appearance.Accent" ShowZero=true>
+    <FluentButton>
+        <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
+    </FluentButton>
+</FluentCounterBadge>
+<br />
+<br />
+<h4>Buttons</h4>
+<br />
+<FluentStack HorizontalGap="10">
+    <FluentButton>Button</FluentButton>
+    <FluentButton Appearance="Appearance.Accent">Accent</FluentButton>
+    <FluentButton Appearance="Appearance.Lightweight">Lightweight</FluentButton>
+    <FluentButton Appearance="Appearance.Outline">Outline</FluentButton>
+    <FluentButton Appearance="Appearance.Stealth">Stealth</FluentButton>
+    <FluentButton BackgroundColor="var(--highlight-bg)" Color="var(--info)">Colored</FluentButton>
+    <FluentButton 
+        Loading="@loading" 
+        OnClick="@StartLoadingAsync" 
+        Appearance="Appearance.Accent">Loading</FluentButton>
+</FluentStack>
+<br />
+<p>With icon at Start or End</p>
+<FluentStack>
+    <FluentButton IconStart="@(new Icons.Regular.Size16.Globe())">
+        Button
+    </FluentButton>
+    <FluentButton IconStart="@(new Icons.Regular.Size16.Globe())"
+                  Appearance="Appearance.Accent">
+        Button
+    </FluentButton>
+    <FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())">
+        Button
+    </FluentButton>
+    <FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())"
+                  Appearance="Appearance.Accent">
+        Button
+    </FluentButton>
+</FluentStack>
+
+<p>With icon in default slot</p>
+<FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())"
+              Title="Globe"
+              OnClick="@StartLoadingAsync" />
+
+<p>With icon in the content. By doing it this way, it is possible to specify a <code>Color</code> for the icon.</p>
+<FluentButton>
+    <FluentIcon Value="@(new Icons.Regular.Size32.Globe())" Color="Color.Error" Slot="start" />
+    Button
+</FluentButton>
+
+<p>With icon and loading</p>
+<FluentStack>
+    <FluentButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
+                  Loading="@loading"
+                  OnClick="@StartLoadingAsync">
+        Refresh
+    </FluentButton>
+    <FluentButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
+                  Appearance="Appearance.Accent"
+                  Loading="@loading"
+                  OnClick="@StartLoadingAsync">
+        Refresh
+    </FluentButton>
+</FluentStack>
+
+@code {
+    //---------------------Buttons---------------------------
+    bool loading = false;
+
+    async Task StartLoadingAsync()
+    {
+        loading = true;
+        await Task.Delay(2000);
+        loading = false;
+    }
+// ----------------------------------------------------------
+}
